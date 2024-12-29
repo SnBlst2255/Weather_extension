@@ -35,8 +35,9 @@ document.getElementById("done").addEventListener("click", function() {
     const unit = document.getElementById("unit-setup").value;
     const format = document.getElementById("time-format-setup").value;
 
-    if(country && city && unit && format){
-        applySettings(country, city, unit, format);
+    const regex = /^([A-Za-zÀ-ÿ'’\-\s]+,\s[A-Za-zÀ-ÿ'’\-\s]+;?\s?)+$/
+    if (regex.test(city) && unit && format) {
+        applySettings(city, unit, format);
     }
 });
 
