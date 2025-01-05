@@ -93,16 +93,16 @@ function getWeather(){
                 
                         document.getElementById("sunrise").innerHTML = convertTo24H(weather.sunrise);
                         document.getElementById("sunset").innerHTML = convertTo24H(weather.sunset);
-                        document.getElementById("moonrise").innerHTML = convertTo24H(weather.moonrise);
-                        document.getElementById("moonset").innerHTML = convertTo24H(weather.moonset);
+                        document.getElementById("moonrise").innerHTML = weather.moonrise == "No moonrise" ? "----" : convertTo24H(weather.moonrise);
+                        document.getElementById("moonset").innerHTML = weather.moonset == "No moonset" ? "----" : convertTo24H(weather.moonset);
                     }else if(weather.format == "12-hour"){
                         const [date, time24] = weather.time.split(" ");
                         document.getElementById("time").innerHTML = convertTo12H(time24);
                 
                         document.getElementById("sunrise").innerHTML = weather.sunrise;
                         document.getElementById("sunset").innerHTML = weather.sunset;
-                        document.getElementById("moonrise").innerHTML = weather.moonrise;
-                        document.getElementById("moonset").innerHTML = weather.moonset;
+                        document.getElementById("moonrise").innerHTML = weather.moonrise == "No moonrise" ? "----" : weather.moonrise;
+                        document.getElementById("moonset").innerHTML = weather.moonset == "No moonset" ? "----" : weather.moonset;
                     }
                 
                     document.getElementById("phase").innerHTML = weather.phase;
