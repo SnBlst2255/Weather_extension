@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Weather by SNBLST</title>
+  </head>
+  <body>
+    <div class="header">
+      <div class="header-item">
+        <img draggable="false" class="logo-img" src="../img/UI/logo.png">
+        <span class="logo-text">Weather by SNBLST</span>
+      </div>
+      <div class="header-item">
+        <img draggable="false" class="icon-small" src="../img/UI/settings.png" title="Settings" id="settings">
+      </div>
+    </div>
+    <div class="main">
+      <div class="main-info">
+        <div class="flex center" style="gap:5px;">
+          <img draggable="false" class="icon-big" src="../img/weather/sun.png" id="condition">
+          <div class="flex column bold mid" title="Wrong city? Make sure you have entered the correct city in the settings.">
+            <span id="city" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; max-width: 165px;">City</span>
+            <span id="country" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; max-width: 165px;">Country</span>
+          </div>
+        </div>
+        <div class="flex column center">
+          <span class="bold large" id="temp">0°</span>
+          <span class="small">
+            <span id="max">0°</span>/ <span id="min">0°</span>, feels like <span id="feels-like">0°</span>
+          </span>
+        </div>
+        <div class="flex center column">
+          <span class="mid bold">Wind:</span>
+          <span class="big bold">
+            <span id="speed">0 kph</span>, <span id="dir">N</span>
+          </span>
+        </div>
+      </div>
+      <div class="forecast-block" id="forecastBlock">
+        <!--Forecast will appear here-->
+      </div>
+      <div class="astro">
+        <div class="astro-block">
+          <div class="flex center column" style="align-items: start;">
+            <span>Susrise: <span id="sunrise">12:00</span>
+            <span>Sunset: <span id="sunset">12:00</span>
+          </div>
+          <div class="flex center column">
+            <img class="icon-mid" src="../img/weather/sun.png">
+          </div>
+        </div>
+        <div class="astro-block">
+          <div class="flex center column" style="align-items: start;">
+            <span>Moonrise: <span id="moonrise">12:00</span></span>
+            <span>Moonset: <span id="moonset">12:00</span></span>
+            <span id="phase">Moon phase</span>
+          </div>
+          <div class="flex center">
+            <img class="icon-mid" src="../img/weather/moon.png">
+          </div>
+        </div>
+      </div>
+      <div class="adv-info">
+        <div class="small-block">
+          <span class="big" id="humidity">0 %</span>
+          <span>Humidity</span>
+        </div>
+        <div class="small-block">
+          <span class="mid" id="pressure">0 mb</span>
+          <span>Pressure</span>
+        </div>
+        <div class="small-block">
+          <span class="big" id="rainfall">0 mm</span>
+          <span>Precipitation</span>
+        </div>
+        <div class="small-block">
+          <span class="mid" id="time">12:00</span>
+          <span>Time</span>
+        </div>
+      </div>
+    </div>
+    <div class="modal" id="settings-modal">
+      <div class="modal-header">
+        <div class="header-item">
+          <img draggable="false" class="logo-img" src="../img/UI/logo.png" alt="Weather v1.0 by SNBLST logo">
+          <span class="logo-text">Weather by SNBLST</span>
+        </div>
+        <div class="header-item">
+          <img src="../img/UI/apply.png" draggable="false" class="icon-small" id="apply" title="Apply" alt="Apply icon">
+        </div>
+      </div>
+      <div class="modal-main flex column center">
+        <div>
+          <h1 class="bold">Settings</h1>
+        </div>
+        <div class="settings-item">
+          <label for="cityInput" class="mid bold">City:</label>
+          <input autocomplete="off" type="text" id="cityInput" placeholder="City, Country">
+        </div>
+        <div class="settings-item">
+          <label class="mid bold" for="unit">Unit:</label>
+          <select id="unit">
+            <option>Metric</option>
+            <option>Imperial</option>
+          </select>
+        </div>
+        <div class="settings-item">
+          <label class="mid bold" for="time-format">Time:</label>
+          <select id="time-format">
+            <option>24-hour</option>
+            <option>12-hour</option>
+          </select>
+        </div>
+        <div class="about">
+          <span>Weather v1.0 by SNBLST</span>
+          <span class="pointer" id="weatherapi-link" title="Weather API">Powered by weatherapi.com</span>
+        </div>
+      </div>
+    </div>
+    <div class="modal" id="setup-modal">
+      <div class="modal-header">
+        <div class="header-item">
+          <img draggable="false" class="logo-img" src="../img/UI/logo.png">
+          <span class="logo-text">Weather by SNBLST</span>
+        </div>
+        <div class="header-item">
+          <img src="../img/UI/apply.png" draggable="false" class="icon-small" id="apply-setup" title="Done!">
+        </div>
+      </div>
+      <div class="center modal-main">
+        <div class="flex center column" style="gap: 5px;">
+          <h1 class="bold">Welcome!</h1>
+          <h2>Let's customize your extension!</h2>
+        </div>
+        <div class="flex center column" style="gap: 10px;">
+          <div class="settings-item">
+            <label for="city-setup" class="mid bold">City:</label>
+            <input autocomplete="off" type="text" id="city-setup" placeholder="City, Country">
+          </div>
+          <div class="settings-item">
+            <label class="mid bold" for="unit-setup">Unit:</label>
+            <select id="unit-setup">
+              <option>Metric</option>
+              <option>Imperial</option>
+            </select>
+          </div>
+          <div class="settings-item">
+            <label class="mid bold" for="time-format-setup">Time:</label>
+            <select id="time-format-setup">
+              <option>24-hour</option>
+              <option>12-hour</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal" id="loading-modal">
+      <div class="modal-header">
+        <div class="header-item">
+          <img draggable="false" class="logo-img" src="../img/UI/logo.png">
+          <span class="logo-text">Weather by SNBLST</span>
+        </div>
+      </div>
+      <div class="center modal-main">
+        <div class="flex center column" style="gap: 5px; margin-top: 15px;">
+          <h1 class="bold">Loading</h1>
+          <h2>Please wait</h2>
+        </div>
+      </div>
+    </div>
+    <div class="modal" id="error-modal">
+      <div class="modal-header">
+        <div class="header-item">
+          <img draggable="false" class="logo-img" src="../img/UI/logo.png">
+          <span class="logo-text">Weather by SNBLST</span>
+        </div>
+        <div class="header-item">
+          <img draggable="false" class="icon-small" src="../img/UI/settings.png" title="Settings" id="settings-error">
+        </div>
+      </div>
+      <div class="center modal-main">
+        <div class="flex center column" style="gap: 5px; margin-top: 15px;">
+          <h1 class="bold">Something went wrong</h1>
+          <h2>Make sure you enter the correct city or try again later.</h2>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/UI/settingsUI.js" type="module"></script>
+    <script src="js/UI/WeatherDisplayService.js" type="module"></script>
+    <script src="js/settings/SettingsService.js" type="module"></script>
+    <script src="js/UI/iconList.js" type="module"></script>
+    <script src="js/time/timeService.js" type="module"></script>
+    <script src="js/weather_data/weatherDataService.js" type="module"></script>
+    <script src="js/weather_data/WeatherApiService.js" type="module"></script>
+    <script src="js/UI/MainUI.js" type="module"></script>
+  </body>
+</html>
